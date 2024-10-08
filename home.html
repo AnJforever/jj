@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <title>A&J</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: rgb(255, 255, 255);
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    
+        header {
+            background-color: rgba(206, 87, 103, 0.8); /* Semi-transparent background */
+            padding: 20px;
+            display: flex;
+            flex-direction: column; /* Stack content vertically */
+            align-items: center;    /* Horizontally center content */
+            justify-content: center; /* Vertically center content */
+            text-align: center;     /* Center text inside the header */
+            min-height: 200px;      /* Ensures header has enough height for centering */
+        }
+    
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+    
+        header p {
+            margin: 10px 0; /* Small margin below the paragraph */
+        }
+    
+        header nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 10px 0; /* Small margin above and below the nav */
+        }
+    
+        header nav ul li {
+            display: inline-block;
+            margin: 0 15px; /* Space between nav items */
+        }
+    
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+    
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+    
+        .uptime {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+    
+        .uptime div {
+            margin: 10px;
+            padding: 20px;
+            background-color: #c04b5b;
+            border-radius: 10px;
+            text-align: center;
+        }
+    
+        .uptime div h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+    
+        .uptime div p {
+            margin: 5px 0 0 0;
+            font-size: 18px;
+        }
+    </style>
+    
+</head>
+<body>
+    
+    
+<header>
+    <h1>A&J for life</h1>
+    <p>We Fell in Love on july 23rd, 2024</p>
+    <nav>
+       
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Time That Passed Since We Fell in Love</h2>
+    <div class="uptime">
+        <div>
+            <h2 id="months">0</h2>
+            <p>Months</p>
+        </div>
+        <div>
+            <h2 id="days">0</h2>
+            <p>Days</p>
+        </div>
+        <div>
+            <h2 id="hours">0</h2>
+            <p>Hours</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Random Picker Section -->
+<section id="randomPicker">
+    <h2>yk whats this for</h2>
+    <button id="pickButton">Press and pray</button>
+    <p id="result"></p>
+</section>
+
+<style>
+    #randomPicker {
+        text-align: center;
+        margin: 50px 0;
+    }
+
+    #pickButton {
+        background-color: #f2f2f2;
+        color: #c04b5b;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    #result {
+        font-size: 24px;
+        margin-top: 20px;
+        color: white;
+    }
+</style>
+
+<script>
+    const options = [
+        "The Little Bridge", "The Square", "Delicious Improvisation", "In the Shower", "Upside Down Cake", 
+        "North-South", "In the Stairway", "The Crossbow", "Birdsong", "Harmonic Duet", "Love Lessons", 
+        "Swallow Dive", "Love Lies Sleeping", "The Scorpion", "Sensual Delight", "Risqué Armchair", 
+        "The Dive", "The Serpent", "Song of Love", "Gypsy", "Ready, steady, go!", "Lust Upended", 
+        "The Opera Singer", "Spontaneous Combustion", "Busy Hands", "Budding Rose", "Excess", 
+        "One Look", "In the Sunlight", "Paradise Lost", "Never Without You", "Karma", "Absolute", 
+        "I love the scent of your hair", "The Prow", "Sexecutive Woman", "Gold Rush", "The Sleigh", 
+        "Scissors", "On your cloud OR In our dreams", "Prepare for Takeoff", "Treasure Hunt", 
+        "Bonnie and Clyde", "Passion Flower", "Vice-Versa", "Intoxicating", "In the Clouds", 
+        "Beasts in the Twilight", "Castaways", "Stolen Kiss", "Weak in the Knees", "Attraction of Two Bodies", 
+        "Just a Kiss", "For Intoxicating Evenings", "The Mermaid", "Do Not Disturb", "And God created woman", 
+        "Close your eyes", "The Mirror", "I think therefore I am", "Sleeping Beauty", "The Fencer", 
+        "The Sexy Gardener", "So Close Together", "The Centaur", "Reunited", "Declaration of Love", 
+        "I love you, neither do I", "Creeping In", "Love is Blind", "Grand Finale", "Tryst", 
+        "The Kissing Tree", "The Violinist", "For long winter evenings", "The Drunken Boat", 
+        "Inviting Pastime", "Quarter past Twelve", "Lovers", "The Path to Happiness", "Busy Bees", 
+        "You can't escape me now", "The Apple and the Snake", "You + Me", "The Sceptre and the Crown", 
+        "Busy Man", "Nirvana", "Intimate Embrace", "The Clash of the Titans", "Unconditional Surrender", 
+        "Yin and Yang", "Like Heaven", "Coffee, please", "Back Seat of a Taxi", "Epicureanism", 
+        "Waves of Pleasure", "The Promise of Dawn", "Down the Road to Joy", "Hercules and Goliath", 
+        "Extreme Supreme", "Dominatrix", "Takeoff", "Stage Door", "All Yours", "1 + 1 = 69", 
+        "Equation with Two Unknowns", "Look at Me", "A Man and a Woman", "In My House", 
+        "Sharp Shooter", "Torrid Moment", "Again and Again", "I'll take you there", "Discovery", 
+        "Dagger and Sheath", "The Rite of Love", "In the Shade of the Trees", "Ambushed", 
+        "The Call of Passion", "Don't Go", "The Renaissance", "Now you see me", "A Merry-Go-Round", 
+        "Look me in the eyes", "The Acrobat", "The Keystone", "The Candle", "The Other Profile", 
+        "Indiscrete Little Nook", "I'm all yours", "Masterful Release", "The Prisoner", 
+        "B as in beautiful", "Savage Lift-off", "Tender entente", "Tell Me", "My Slave", 
+        "Royal Behind", "By Surprise", "Height of Delicacy", "Cattily Sweet", "The Cavern", 
+        "The Sofa", "Comfortable Seating", "The Sphinx", "The Duel", "Sensuous Stroll", 
+        "Fusion", "Guilty as charged", "Tell me who you are", "The Conquering Heroine", 
+        "Caught in a Trap", "The Butterfly", "Andromeda", "From a Different Angle", 
+        "With Emotion", "Perfect Union", "So Supple", "Upside Down", "The Swing", 
+        "Flying Trapeze", "With Relish", "Hot Seat", "Devilish Massage", "Sweet Tooth", 
+        "The Gardener", "The Fugitive", "Over the Waves", "Abandonment", "Letting Go", 
+        "The Hostage", "The Windmill", "Rocker", "The Reed", "Roulette", "Waltz", 
+        "The Grasp", "Prince Charming", "Sensual Ascension", "Love Trance", "The Conquest", 
+        "Cross-legged", "The Long Ride", "The Vine", "The Other Side of the Moon", 
+        "Suspended", "The Dance", "At the Crossroads", "Spirit standing", "Pirouette", 
+        "Flamingo", "On Bended knee", "Precision Mastery", "Self-Absorbed", "Straddled", 
+        "The Trident", "Acrobats", "Rollercoaster", "The Tango"
+    ];
+
+    function pickRandomOption() {
+        const randomIndex = Math.floor(Math.random() * options.length);
+        document.getElementById('result').innerText = `So we do: ${options[randomIndex]}`;
+    }
+
+    document.getElementById('pickButton').addEventListener('click', pickRandomOption);
+</script>
+
+<div class="container">
+        
+    <button onclick="window.open('bucketlist.html', '_blank')">Bucket List</button>
+    <button onclick="window.open('index.html', '_blank')">hehe</button>
+    <button onclick="window.open('gallery.html', '_blank')">Our Memories</button>
+    <button onclick="window.open('calendar.html', '_blank')">Notes & Calendar</button>
+</div>
+
+<style>
+    button {
+        background-color: #c04b5b;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        margin: 10px;
+    }
+</style>
+<script>
+    // Set the date when the couple fell in love
+    const loveDate = new Date("2024-06-22T00:00:00");
+
+    function updateUptime() {
+        const now = new Date();
+        const diff = now - loveDate;
+
+        const months = Math.floor(diff / (1000 * 60 * 60 * 24 * 30));
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+
+        document.getElementById('months').innerText = months;
+        document.getElementById('days').innerText = days;
+        document.getElementById('hours').innerText = hours;
+    }
+
+    setInterval(updateUptime, 1000); // Update the uptime every second
+</script>
+
+</body>
+</html>
